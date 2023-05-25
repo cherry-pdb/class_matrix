@@ -789,18 +789,17 @@ void iterator_operators_check()
 {
     std::cout << "----------------------------------------------" << std::endl;
     std::cout << "iterator operators == and !=:" << std::endl;
-    Matrix <int> matrix ({{1, 2, 3}, {4, 5, 6}});
-    Iterator <int> it_1 = matrix.iterator_begin();
-    Iterator <int> it_2 = matrix.iterator_begin();
-    bool flag = true;
-    for (; !it_1.is_end() && !it_2.is_end();) {
-        if (*it_1 == *it_2) {
-        } else if (*it_1 != *it_2){
-            std::cerr << "iterator operators error.";
-            flag = false;
-        }
-        ++it_1;
-        ++it_2;
-    }
-    flag ? std::cout << "test passed" << std::endl : std::cout << "test not passed" << std::endl;
+    Matrix <int> matrix1 ({{1, 2, 3}, {4, 5, 6}});
+    Matrix <int> matrix2 ({{1, 2, 3}, {4, 5, 6}});
+    Iterator <int> it_1 = matrix1.iterator_begin();
+    Iterator <int> it_2 = matrix2.iterator_begin();
+    if (it_1 != it_2)
+        std::cout << "diff matrixes: test passed" << std::endl;
+    else
+        std::cout << "diff matrixes: test not passed" << std::endl;
+
+    if (it_1 == it_1)
+        std::cout << "equal matrixes: test passed" << std::endl;
+    else
+        std::cout << "equal matrixes: test not passed" << std::endl;
 }
