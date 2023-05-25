@@ -77,9 +77,9 @@ void Matrix <T>::alloc_memory()
     }
     catch (std::bad_alloc &ex)
     {
-        throw Exceptions ("memory allocation error.");
         if (data != NULL)
             delete[] data;
+        throw Exceptions ("memory allocation error.");
     }
 }
 
@@ -112,6 +112,8 @@ Matrix <T>::Matrix(Matrix<T>&& mat)
     rows = mat.rows;
     cols = mat.cols;
     data = mat.data;
+    mat.rows = 0;
+    mat.cols = 0;
     mat.data = nullptr;
 }
 
@@ -279,11 +281,9 @@ template <typename T>
 Matrix<T> Matrix <T>::operator +(double num) //перегрузка оператора + с числом
 {
     Matrix <T> new_mat(*this);
-    for (int i = 0; i < new_mat.get_rows(); i++){
-        for (int j = 0; j < new_mat.get_cols(); j++) {
+    for (int i = 0; i < new_mat.get_rows(); i++)
+        for (int j = 0; j < new_mat.get_cols(); j++)
             new_mat.data[i][j] += num;
-        }
-    }
     return new_mat;
 }
 
