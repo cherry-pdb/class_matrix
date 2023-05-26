@@ -129,21 +129,16 @@ Matrix <T>::Matrix(std::initializer_list<std::initializer_list<T>> lst) //кон
             cols++;
         break;
     }
-    if (rows == 0 || cols == 0)
-        throw Exceptions ("incorrect initializer list.");
-    else
+    alloc_memory();
+    for (auto i : lst)
     {
-        alloc_memory();
-        for (auto i : lst)
+        ind_j = 0;
+        for (auto j : i)
         {
-            ind_j = 0;
-            for (auto j : i)
-            {
-                set_elem(ind_i, ind_j, j);
-                ind_j++;
-            }
-            ind_i++;
+            set_elem(ind_i, ind_j, j);
+            ind_j++;
         }
+        ind_i++;
     }
 }
 
