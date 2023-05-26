@@ -174,7 +174,7 @@ bool Matrix <T>::is_square()
 template <typename _T>
 std::ostream& operator << (std::ostream& os, const Matrix<_T>& mat) //перегрузка оператора <<
 {
-    if (mat.get_rows() == 0 || mat.get_cols() == 0)
+    if (mat.get_rows() == 0 || mat.get_cols() == 0 || mat.data = nullptr)
         throw Exceptions ("matrix is null.");
     for (int i = 0; i < mat.get_rows(); i++)
     {
